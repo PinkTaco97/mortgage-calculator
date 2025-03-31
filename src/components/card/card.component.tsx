@@ -3,7 +3,7 @@
 import { useThemeStore } from '@/theme/theme.store';
 import { BrandKey } from '@/theme/theme.types';
 
-export function Card({ active, brand = 'wbc' }: { active?: boolean; brand?: BrandKey }) {
+export default function Card({ active, brand = 'wbc' }: { active?: boolean; brand?: BrandKey }) {
   const { themes, activeTheme, activeThemeKey, brandName } = useThemeStore();
   return (
     <li

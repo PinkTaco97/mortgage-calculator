@@ -15,16 +15,20 @@ export const useThemeStore = create<ThemeState>()(set => ({
   activeTheme: WBCTheme,
   activeThemeKey: 'wbc',
   brandName: {
-    wbc: 'Westpac',
-    stg: 'St. George',
     bom: 'Bank of Melbourne',
     bsa: 'BankSA',
+    stg: 'St. George',
+    wbc: 'Westpac',
   },
-  setTheme: theme => set(state => ({ activeThemeKey: theme, activeTheme: state.themes[theme] })),
+  setTheme: (theme) => {
+    set(state => ({ activeThemeKey: theme, activeTheme: state.themes[theme]}))
+    console.log('@TEST/setTheme', theme);
+  },
+  
   themes: {
-    wbc: WBCTheme,
     bom: BOMTheme,
     bsa: BSATheme,
     stg: STGTheme,
+    wbc: WBCTheme,
   },
 }));

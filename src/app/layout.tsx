@@ -6,8 +6,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'GEL Playground',
-  description: 'GEl Playground',
+  title: 'Mortgage Calculator',
+  description: 'This calculator helps you work out how much your mortgage repayments will be.',
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme={process.env.THEME}>
       <body className={inter.className}>{children}</body>
     </html>
   );
