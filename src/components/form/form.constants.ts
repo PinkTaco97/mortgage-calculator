@@ -1,6 +1,6 @@
 import { Frequency } from "./form.types";
 
-export const FREQUENCY: Record<Frequency, number> = {
+export const FREQUENCY : Record<Frequency, number> = {
     weekly: 52,
     fortnightly: 26,
     monthly: 12,

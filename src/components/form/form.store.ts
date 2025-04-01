@@ -1,19 +1,26 @@
 import { create } from 'zustand';
 
 // Types.
-import { FormState } from './form.types';
+import { FormState, FormInitialValues, Frequency } from './form.types';
+
+// Utilities.
+import { formatCurrency, formatNumber, formatPercentage } from '@/utils';
+
+const initialVaules : FormInitialValues = {
+    amount: "",
+    fees: "",
+    feeFrequency: "monthly",
+    interestRate: "",
+    length: "",
+    repaymentFrequency: "weekly",
+}
 
 export const useFormStore = create<FormState>()(set => ({
-    amount: null,
-    fees: null,
-    feeFrequency: "monthly",
-    interestRate: null,
-    length: null,
-    repaymentFrequency: "weekly",
-    setAmount: (amount: string) => set(() => ({ amount })),
-    setFees: (fees: string) => set(() => ({ fees })),
-    setFeeFrequency: (feeFrequency) => set(() => ({ feeFrequency })),
-    setInterestRate: (interestRate: string) => set(() => ({ interestRate })),
-    setLength: (length: string) => set(() => ({ length })),
-    setRepaymentFrequency: (repaymentFrequency) => set(() => ({ repaymentFrequency })),
+    ...initialVaules,
+    setAmount: (amount : string) => set(() => ({ amount: formatCurrency(amount, 10000000) })),
+    setFees: (fees : string) => set(() => ({ fees: formatCurrency(fees, 10000) })),
+    setFeeFrequency: (feeFrequency : Frequency) => set(() => ({ feeFrequency })),
+    setInterestRate: (interestRate : string) => set(() => ({ interestRate: formatPercentage(interestRate, 20.00) })),
+    setLength: (length : string) => set(() => ({ length: String(formatNumber(length, 30)) })),
+    setRepaymentFrequency: (repaymentFrequency : Frequency) => set(() => ({ repaymentFrequency })),
 }));
