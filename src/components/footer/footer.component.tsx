@@ -1,12 +1,17 @@
 'use client';
 
+// Components.
 import { Footer as _Footer } from "@westpac/ui";
 import { SecurityIcon } from "@westpac/ui/icon";
 
+// Theme.
+import { useThemeStore } from '@/theme/theme.store';
+
 export default function Footer() {
+  const { activeThemeKey, } = useThemeStore();
   return(
     <_Footer
-        brand="wbc"
+        brand={activeThemeKey}
         hideLogo
     >
         <div className="relative">
